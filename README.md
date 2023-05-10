@@ -7,8 +7,14 @@ Strobe: The algorithm allows a group of nodes to share a secret among themselves
 Bicorn: A group of nodes each generate their random values from a provided generator and publish their commitments. After revealing their random values, DRB output similar to classic commit-reveal protocol is produced if values are honest, else recovery with t steps of sequential work is required. 
 
 ### Requirements
-    - Python 3.7 or higher
+    - Python 3.11 or higher
     - asyncio, sympy, math, socket, json, tk Python libraries
+
+Create a virtual environment and activate it:
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
 
 You can install the required libraries using pip:
 ```bash

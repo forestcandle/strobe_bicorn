@@ -11,6 +11,7 @@ import json
 from gui import NodeGUI
 import time
 import sys
+
 sys.set_int_max_str_digits(0)
 
 NUM_NODES = 5
@@ -110,7 +111,9 @@ class NodeBicorn:
         while True:
             self._prepare()
             msg = {"sender": self.id, "round": self.current_round, "curr_alpha": str(self._reveal()), "curr_commit": str(self._commit())}
-            for i in range(self.lamb):
+            sender_options = [i for i in range(self.lamb)]
+            random.shuffle(sender_options)
+            for i in sender_options:
                 await self.send_message_to_socket(i, msg)
 
             await asyncio.sleep(0.1)  # Wait for the next round
@@ -228,7 +231,7 @@ class NodeStrobe:
             for i in options:
                 # if i != self.id:
                 await self.send_message_to_socket(i, msg)
-                await asyncio.sleep(random.uniform(0.1, 0.5))  # Add random small delay
+                # await asyncio.sleep(random.uniform(0.1, 0.5))  # Add random small delay
 
             await asyncio.sleep(0.1)  # Wait for the next round
 
@@ -246,8 +249,8 @@ class NodeStrobe:
         data = await reader.read(100)
         self.data_received_in_bytes += len(data)
         msg = json.loads(data.decode())
-        if self.id == 2:
-            print(f"Node {self.id} received message {msg}")
+        # if self.id == 2:
+        #     print(f"Node {self.id} received message {msg}")
 
         round_num = msg["round"]
         msg_sender = msg["sender"]
@@ -264,10 +267,10 @@ class NodeStrobe:
                     x_next_array = {x[0]: x[1] for x in self.rounds_received[round_num]}
                     x_next = self._combine(x_next_array, senders)
                     if self._verify(x_next, self.x_curr):
-                        print(f"Node {self.id} verified the share")
+                        # print(f"Node {self.id} verified the share")
                         self.x_curr = x_next
-                    else:
-                        print(f"Node {self.id} failed to verify the share")
+                    # else:
+                        # print(f"Node {self.id} failed to verify the share")
                 
                     self.current_round += 1
                     print(f"Reached round {self.current_round} for node {self.id} -> Message = {self.x_curr}")
