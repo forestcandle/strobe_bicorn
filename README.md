@@ -13,6 +13,7 @@ Bicorn: A group of nodes each generate their random values from a provided gener
 Create a virtual environment and activate it:
 ```bash
 conda create -n myenv python=3.11
+conda activate myenv
 ```
 
 You can install the required libraries using pip:
