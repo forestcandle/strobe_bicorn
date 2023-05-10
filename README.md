@@ -35,6 +35,10 @@ arg3:
 - in Bicorn: time delay t
 arg4: the implementation name "strobe" or "bicorn"
 ```
+###  Example
+```
+python main.py 14 2 6 strobe    
+```
 
 This will start the simulation with these parameters. The GUI shows the current round, message, amount of data transferred, time taken etc shared by each node in that round.
 
