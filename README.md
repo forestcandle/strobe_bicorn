@@ -12,13 +12,12 @@ Bicorn: A group of nodes each generate their random values from a provided gener
 
 Create a virtual environment and activate it:
 ```bash
-python3 -m venv venv
-source venv/bin/activate
+conda create -n myenv python=3.11
 ```
 
 You can install the required libraries using pip:
 ```bash
-pip install asyncio sympy math socket json tk
+pip install asyncio sympy tk
 ```
 
 ### Usage
