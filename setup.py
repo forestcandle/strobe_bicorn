@@ -7,7 +7,7 @@ SEED_ONE = 13
 SEED_TWO = 18
 random.seed(0)
 
-def setup(n, t, alg):
+def setup(n, t, alg, limiter = True):
     p_dash = get_germain_prime(SEED_ONE)
     q_dash = get_germain_prime(SEED_TWO) #set seeds just to compare speed for plotting fairly
     #p_dash = get_germain_prime(random.randint(1,int(n)))
@@ -17,6 +17,8 @@ def setup(n, t, alg):
     N = p*q 
 
     if alg == "bicorn":
+        if limiter == True:
+            t = max(t,5) # Setting this limit to prevent GUI errors (can be removed if not using GUI)
 
         noMatch = True
         gen = 0
