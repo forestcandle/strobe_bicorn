@@ -2,15 +2,15 @@
 
 This is an implementation of STROBE and BICORN in Python, using asyncio.
 
-Strobe: The algorithm allows a group of nodes to share a secret among themselves in a secure and distributed manner. Each node only knows a part of the secret, and the secret can only be reconstructed if enough nodes collaborate.
+Strobe: The algorithm allows a group of nodes to share a secret among themselves in a secure and distributed manner. Each node only knows a part of the secret, and the secret can only be reconstructed if enough nodes collaborate. 
 
 Bicorn: A group of nodes each generate their random values from a provided generator and publish their commitments. After revealing their random values, DRB output similar to classic commit-reveal protocol is produced if values are honest, else recovery with t steps of sequential work is required. 
 
 ### Requirements
-    - Python 3.11 or higher
+    - Python 3.11 or higher (Conda environment preferred)
     - asyncio, sympy, math, socket, json, tk Python libraries
 
-Create a virtual environment and activate it:
+Create a virtual environment and activate it (Conda required) - Else make sure that python version is above 3.11 and libraries described above are installed:
 ```bash
 conda create -n myenv python=3.11
 conda activate myenv
